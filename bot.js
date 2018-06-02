@@ -547,4 +547,4 @@ bot.on("message", async function(message) {
 
 
 
-bot.login('BOT_TOKEN');
+bot.login('BOT_LOGIN');
