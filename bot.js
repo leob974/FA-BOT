@@ -23,7 +23,7 @@ bot.on("ready", function () {
         bot.users.size + " visiteurs !"
     ]
     bot.user.setActivity(setInterval(function () {
-        bot.user.setActivity(games[Math.floor(Math.random() * games.length)], {url:"https://www.twitch.tv/FrenchArts", type: "STREAMING"})
+        bot.user.setActivity(games[Math.floor(Math.random() * games.length)], {type: "LISTENING"})
     }, 3000))
 
     console.log("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_")
@@ -85,27 +85,10 @@ bot.on("guildMemberAdd", function(member) {
         bot.users.size + " visiteurs !"
     ]
     bot.user.setActivity(setInterval(function() {
-        bot.user.setActivity(games[Math.floor(Math.random() * games.length)], {url:"https://www.twitch.tv/FrenchArts", type: "STREAMING"})
+        bot.user.setActivity(games[Math.floor(Math.random() * games.length)], {type: "LISTENING"})
     }, 3000))
 
-    member.guild.channels.find("name", "bienvenue👋").sendMessage("", {
-        embed: {
-            color: 0x008000,
-            author: '',
-            title: '',
-            description: '',
-            fields: [
-                {
-                    name: member.displayName,
-                    value: 'a rejoint :heart:  ',
-                    inline: false
-                }],
-            footer: {
-                text: 'Bienvenue sur FrenchArts !',
-            },
-        }
-    });
-});
+    member.guild.channels.find("name", "bienvenue👋").sendMessage( member.displayName + " à rejoint le discord :blush:, nous sommes actuellement " + bot.users.size + " sur le discord !")
 
 bot.on("guildMemberRemove", function(member) {
 
@@ -117,26 +100,10 @@ bot.on("guildMemberRemove", function(member) {
         bot.users.size + " visiteurs !"
     ]
     bot.user.setActivity(setInterval(function() {
-        bot.user.setActivity(games[Math.floor(Math.random() * games.length)], {url:"https://www.twitch.tv/FrenchArts", type: "STREAMING"})
+        bot.user.setActivity(games[Math.floor(Math.random() * games.length)], {type: "LISTENING"})
     }, 3000))
 
-    member.guild.channels.find("name", "bienvenue👋").sendMessage("", {
-        embed: {
-            color: 0xFF0000,
-            author: '',
-            title: '',
-            description: '',
-            fields: [
-                {
-                    name: member.displayName,
-                    value: 'a quitté le serveur :cry:',
-                    inline: false
-                }],
-            footer: {
-                text: 'Une grande perte... Ou pas',
-            },
-        }
-    });
+    member.guild.channels.find("name", "bienvenue👋").sendMessage( member.displayName + "à quitté le serveur :cry:, nous sommes actuellement " + bot.users.size + " sur le discord !")
 
 });
 
@@ -526,7 +493,7 @@ bot.on("message", async function(message) {
             break;;
 
         case "ping":
-            message.channel.sendMessage("Pong! Le bot a actuellement " + bot.ping + " ms ! :D");
+            message.channel.sendMessage("Le bot a actuellement " + bot.ping + " ms !");
             message.delete();
             break;
         //INSCRIPTION-CONNEXION SYSTEME
@@ -547,4 +514,4 @@ bot.on("message", async function(message) {
 
 
 
-bot.login('BOT_LOGIN');
+bot.login('BOT_TOKEN');
