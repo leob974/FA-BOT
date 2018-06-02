@@ -12,3 +12,8 @@
     "discord.js": "^11.3.2"
   }
 }
+
+"scripts": {
+  "start": "node server.js"
+},
+"main": "server.js"
